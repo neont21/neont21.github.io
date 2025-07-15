@@ -4,8 +4,7 @@
   import { skillList } from "./skill-components/skill-list.js";
   import { onMount } from "svelte";
 
-  onMount(() => {
-    // v Animate the skills items on reveal
+  function setupWaypoints() {
     let skillsAnimation = document.querySelectorAll(".skills-animation");
     skillsAnimation.forEach((item) => {
       new Waypoint({
@@ -19,7 +18,17 @@
         },
       });
     });
-    // ^ Animate the skills items on reveal
+  }
+
+  onMount(() => {
+    function trySetup() {
+      if (window.Waypoint) {
+        setupWaypoints();
+      } else {
+        setTimeout(trySetup, 100); // Retry after 100ms
+      }
+    }
+    trySetup();
   });
 </script>
 

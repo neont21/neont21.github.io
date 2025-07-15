@@ -6,75 +6,82 @@
     import AOS from "aos";
 
     onMount(() => {
-        // v Animation on scroll function and init
-        function aosInit() {
-            AOS.init({
-                duration: 600,
-                easing: "ease-in-out",
-                once: true,
-                mirror: false,
-            });
-        }
-        window.addEventListener("load", aosInit);
-        // ^ Animation on scroll function and init
-
-        // v Init isotope layout and filters
-        document
-            .querySelectorAll(".isotope-layout")
-            .forEach(function (isotopeItem) {
-                let layout =
-                    isotopeItem.getAttribute("data-layout") ?? "masonry";
-                let filter =
-                    isotopeItem.getAttribute("data-default-filter") ?? "*";
-                let sort =
-                    isotopeItem.getAttribute("data-sort") ?? "original-order";
-
-                let initIsotope;
-                imagesLoaded(
-                    isotopeItem.querySelector(".isotope-container"),
-                    function () {
-                        initIsotope = new Isotope(
-                            isotopeItem.querySelector(".isotope-container"),
-                            {
-                                itemSelector: ".isotope-item",
-                                layoutMode: layout,
-                                filter: filter,
-                                sortBy: sort,
-                            },
-                        );
-                    },
-                );
-
-                isotopeItem
-                    .querySelectorAll(".isotope-filters li")
-                    .forEach(function (filters) {
-                        filters.addEventListener(
-                            "click",
-                            function () {
-                                isotopeItem
-                                    .querySelector(
-                                        ".isotope-filters .filter-active",
-                                    )
-                                    .classList.remove("filter-active");
-                                this.classList.add("filter-active");
-                                initIsotope.arrange({
-                                    filter: this.getAttribute("data-filter"),
-                                });
-                                if (typeof aosInit === "function") {
-                                    aosInit();
-                                }
-                            },
-                            false,
-                        );
+        function initPortfolio() {
+            if (window.imagesLoaded && window.Isotope && window.GLightbox) {
+                // v Animation on scroll function and init
+                function aosInit() {
+                    AOS.init({
+                        duration: 600,
+                        easing: "ease-in-out",
+                        once: true,
+                        mirror: false,
                     });
-            });
-        // ^ Init isotope layout and filters
+                }
+                window.addEventListener("load", aosInit);
+                // ^ Animation on scroll function and init
 
-        // v Initiate glightbox
-        const glightbox = GLightbox({
-            selector: ".glightbox",
-        });
-        // ^ Initiate glightbox
+                // v Init isotope layout and filters
+                document
+                    .querySelectorAll(".isotope-layout")
+                    .forEach(function (isotopeItem) {
+                        let layout =
+                            isotopeItem.getAttribute("data-layout") ?? "masonry";
+                        let filter =
+                            isotopeItem.getAttribute("data-default-filter") ?? "*";
+                        let sort =
+                            isotopeItem.getAttribute("data-sort") ?? "original-order";
+
+                        let initIsotope;
+                        imagesLoaded(
+                            isotopeItem.querySelector(".isotope-container"),
+                            function () {
+                                initIsotope = new Isotope(
+                                    isotopeItem.querySelector(".isotope-container"),
+                                    {
+                                        itemSelector: ".isotope-item",
+                                        layoutMode: layout,
+                                        filter: filter,
+                                        sortBy: sort,
+                                },
+                                );
+                            },
+                        );
+
+                        isotopeItem
+                            .querySelectorAll(".isotope-filters li")
+                            .forEach(function (filters) {
+                                filters.addEventListener(
+                                    "click",
+                                    function () {
+                                        isotopeItem
+                                            .querySelector(
+                                                ".isotope-filters .filter-active",
+                                            )
+                                            .classList.remove("filter-active");
+                                        this.classList.add("filter-active");
+                                        initIsotope.arrange({
+                                            filter: this.getAttribute("data-filter"),
+                                        });
+                                        if (typeof aosInit === "function") {
+                                            aosInit();
+                                        }
+                                    },
+                                    false,
+                                );
+                            });
+                    });
+                // ^ Init isotope layout and filters
+
+                // v Initiate glightbox
+                const glightbox = GLightbox({
+                    selector: ".glightbox",
+                });
+                // ^ Initiate glightbox
+            } else {
+                setTimeout(initPortfolio, 100); // Retry after 100ms
+            }
+        }
+        initPortfolio();
     });
 </script>
 
