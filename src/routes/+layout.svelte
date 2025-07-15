@@ -19,6 +19,7 @@
   import { onMount } from "svelte";
   import AOS from "aos";
 
+
   let { children } = $props();
 
   onMount(() => {

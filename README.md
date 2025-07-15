@@ -10,6 +10,8 @@
 ~/workspace/portfolio$ npm install svelte @sveltestrap/sveltestrap
 # Bootstrap Template에서 사용하는 라이브러리를 설치한다.
 ~/workspace/portfolio$ npm install aos
+# SSG
+~/workspace/portfolio$ npm i -D @sveltejs/adapter-static
 ```
 
 - [sv](https://github.com/sveltejs/cli)
