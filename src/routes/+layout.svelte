@@ -32,29 +32,43 @@
     }
     // ^ Preloader
 
-    // v  Init typed.js
-    const selectTyped = document.querySelector(".typed");
-    if (selectTyped) {
-      let typed_strings = selectTyped.getAttribute("data-typed-items");
-      let typed_strings_list = typed_strings?.split(",");
-      new Typed(".typed", {
-        strings: typed_strings_list,
-        loop: true,
-        typeSpeed: 100,
-        backSpeed: 50,
-        backDelay: 2000,
-      });
+    // Register service worker to control HTML caching
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
     }
+
+    // v  Init typed.js with retry (like Waypoint)
+    function setupTyped() {
+      const selectTyped = document.querySelector(".typed");
+      if (selectTyped && window.Typed) {
+        let typed_strings = selectTyped.getAttribute("data-typed-items");
+        let typed_strings_list = typed_strings?.split(",");
+        new window.Typed(".typed", {
+          strings: typed_strings_list,
+          loop: true,
+          typeSpeed: 100,
+          backSpeed: 50,
+          backDelay: 2000,
+        });
+      } else if (selectTyped) {
+        setTimeout(setupTyped, 100); // Retry after 100ms
+      }
+    }
+    setupTyped();
     // ^ Init typed.js
 
     // v Animation on scroll function and init
     function aosInit() {
-      AOS.init({
-        duration: 600,
-        easing: "ease-in-out",
-        once: true,
-        mirror: false,
-      });
+      if (window.AOS) {
+        window.AOS.init({
+          duration: 600,
+          easing: "ease-in-out",
+          once: true,
+          mirror: false,
+        });
+      } else {
+        setTimeout(aosInit, 100);
+      }
     }
     window.addEventListener("load", aosInit);
     // ^ Animation on scroll function and init
