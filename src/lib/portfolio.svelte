@@ -7,17 +7,14 @@
 
     onMount(() => {
         function initPortfolio() {
-            if (window.imagesLoaded && window.Isotope && window.GLightbox) {
+            if (window.AOS && window.imagesLoaded && window.Isotope && window.GLightbox) {
                 // v Animation on scroll function and init
-                function aosInit() {
-                    AOS.init({
-                        duration: 600,
-                        easing: "ease-in-out",
-                        once: true,
-                        mirror: false,
-                    });
-                }
-                window.addEventListener("load", aosInit);
+                window.AOS.init({
+                    duration: 600,
+                    easing: "ease-in-out",
+                    once: true,
+                    mirror: false,
+                });
                 // ^ Animation on scroll function and init
 
                 // v Init isotope layout and filters
@@ -32,17 +29,17 @@
                             isotopeItem.getAttribute("data-sort") ?? "original-order";
 
                         let initIsotope;
-                        imagesLoaded(
+                        window.imagesLoaded(
                             isotopeItem.querySelector(".isotope-container"),
                             function () {
-                                initIsotope = new Isotope(
+                                initIsotope = new window.Isotope(
                                     isotopeItem.querySelector(".isotope-container"),
                                     {
                                         itemSelector: ".isotope-item",
                                         layoutMode: layout,
                                         filter: filter,
                                         sortBy: sort,
-                                },
+                                    },
                                 );
                             },
                         );
@@ -62,9 +59,12 @@
                                         initIsotope.arrange({
                                             filter: this.getAttribute("data-filter"),
                                         });
-                                        if (typeof aosInit === "function") {
-                                            aosInit();
-                                        }
+                                        window.AOS.init({
+                                            duration: 600,
+                                            easing: "ease-in-out",
+                                            once: true,
+                                            mirror: false,
+                                        });
                                     },
                                     false,
                                 );
@@ -73,7 +73,7 @@
                 // ^ Init isotope layout and filters
 
                 // v Initiate glightbox
-                const glightbox = GLightbox({
+                window.GLightbox({
                     selector: ".glightbox",
                 });
                 // ^ Initiate glightbox
