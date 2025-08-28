@@ -4,6 +4,7 @@
     import { experiences } from "./resume-components/experiences";
     import { educations } from "./resume-components/educations";
     import { certifications } from "./resume-components/certifications";
+    import { prizes } from "./resume-components/prizes";
 </script>
 
 <section id="resume" class="resume section">
@@ -74,6 +75,27 @@
                     {/each}
                 </div>
                 <!-- ^ Certifications Section -->
+                
+                <!-- v Prizes Section -->
+                <div
+                    class="resume-section"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                >
+                    <h3>
+                        <Icon name="trophy" class="me-2 resume-icon" />
+                        수상 내역
+                    </h3>
+
+                    {#each prizes as prize}
+                        <ResumeItem
+                            title={prize.title}
+                            period={prize.date}
+                            location={prize.location}
+                        />
+                    {/each}
+                </div>
+                <!-- ^ Prizes Section -->
             </Col>
         </Row>
     </Container>
