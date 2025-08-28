@@ -30,9 +30,8 @@
                         </p>
 
                         <div class="hero-actions">
-                            <a href="#portfolio" class="btn btn-primary"
-                                >작업물 보기</a
-                            >
+                            <a href="#portfolio" class="btn btn-primary">작업물 보기</a>
+                            <a href="portfolio_joowon.pdf" download class="btn btn-secondary">PDF 내려받기</a>
                         </div>
                     </div>
                 </Col>
@@ -209,6 +208,20 @@
         transform: translateY(-2px);
         box-shadow: 0 8px 25px
             color-mix(in srgb, var(--accent-color), transparent 70%);
+    }
+    
+    .hero .hero-actions .btn.btn-secondary {
+        background-color: var(--contrast-color);
+        color: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+
+    .hero .hero-actions .btn.btn-secondary:hover {
+        background-color: color-mix(in srgb, var(--contrast-color), black 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px
+            color-mix(in srgb, var(--accent-color), transparent 70%);
+    
     }
 
     .hero .hero-visual {
