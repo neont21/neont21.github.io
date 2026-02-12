@@ -1,5 +1,9 @@
 export const certifications = [
     {
+        title: '웹디자인개발자 자격증',
+        date: '2025. 09. 26.'
+    },
+    {
         title: '컴퓨터그래픽기능사 자격증',
         date: '2025. 07. 04.'
     },
