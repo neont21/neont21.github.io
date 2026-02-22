@@ -47,13 +47,6 @@
 
 {#if createCarousel}
     <div class="project-carousel">
-        <ul class="carousel" style="width: {imgs.length * 100}%">
-        {#each imgList as img, index (img)}
-            <li class="carousel-item">
-                <img src="/{img}" alt="{title} {index + 1}">
-            </li>
-        {/each}
-        </ul>
         <div class="carousel-btns">
             <button class="btn-prev" onclick={prev}>
                 <Icon icon="mdi:skip-previous"></Icon>
@@ -65,6 +58,13 @@
                 <Icon icon="mdi:skip-next"></Icon>
             </button>
         </div>
+        <ul class="carousel" style="width: {imgs.length * 100}%">
+        {#each imgList as img, index (img)}
+            <li class="carousel-item">
+                <img src="/{img}" alt="{title} {index + 1}">
+            </li>
+        {/each}
+        </ul>
     </div>
 {:else}
     <div class="project-imgs">
@@ -92,12 +92,16 @@
 
     .carousel img {
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
+    }
+
+    .project-carousel {
+        margin-top: -4rem;
     }
 
     .project-carousel .carousel-btns {
         position: relative;
-        bottom: 4rem;
+        top: 4rem;
         text-align: center;
         padding: 1rem;
     }
