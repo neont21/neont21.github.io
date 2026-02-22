@@ -1,0 +1,93 @@
+/* fonts */
+:root {
+    --default-font: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --heading-font: 'Ubuntu', sans-serif;
+    --nav-font: 'Nunito', sans-serif;
+}
+
+/* color */
+:root {
+    --background-color: #1f1f1f;
+    --default-color: #ffffff;
+    --heading-color: #ffffff;
+    --accent-color: #dd4814;
+    --primary-color: #dd4814;
+    --secondary-color: #772953;
+    --surface-color: #232323;
+    --contrast-color: #ffffff;
+    --nav-color: #ffffff;
+    --nav-hover-color: var(--accent-color);
+    --nav-mobile-background-color: #393939;
+    --nav-dropdown-background-color: var(--nav-mobile-background-color);
+    --nav-dropdown-color: var(--nav-color);
+}
+
+/* scroll */
+:root {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--default-color);
+    background-color: var(--background-color);
+    font-family: var(--default-font);
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: color-mix(in srgb, var(--accent-color), transparent 25%);
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+    font-family: var(--heading-font);
+}
+
+blockquote {
+    font-style: italic;
+    text-align: justify;
+    padding: 0 2rem;
+}
+
+section {
+    color: var(--default-color);
+    padding: 8rem 4rem;
+    overflow: clip;
+    z-index: 100;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: all 0.5s cubic-bezier(0.24, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.section-title h2 {
+    display: inline;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    box-shadow: 0.5rem 0.5rem 1rem var(--accent-color);
+    padding: 1rem 4rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+}
