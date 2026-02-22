@@ -62,6 +62,12 @@ section {
     z-index: 100;
 }
 
+@media (max-width: 540px) {
+    section {
+        padding: 4rem 2rem;
+    }
+}
+
 .reveal {
     opacity: 0;
     transform: translateY(2rem);

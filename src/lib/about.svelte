@@ -208,4 +208,15 @@
             margin: 0 auto;
         }
     }
+    
+    @media (max-width: 540px) {
+        #profile-card {
+            width: 60vw;
+        }
+
+        #profile-card .img-container {
+            width: initial;
+            height: initial;
+        }
+    }
 </style>

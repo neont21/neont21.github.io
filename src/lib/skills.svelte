@@ -83,4 +83,10 @@
             flex-direction: column;
         }
     }
+
+    @media (max-width: 540px) {
+        .skill-container {
+            padding: 0;
+        }
+    }
 </style>

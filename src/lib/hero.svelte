@@ -143,6 +143,17 @@
         }
     }
 
+    @media (max-width: 540px) {
+        #hero-content {
+            padding: 28rem 2rem 2rem 2rem;
+        }
+
+        .btn {
+            font-size: 1rem;
+            padding: 0.75rem 1.2rem;
+        }
+    }
+
     @keyframes floatIcon {
         0%,
         100% {

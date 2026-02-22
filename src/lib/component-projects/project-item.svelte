@@ -32,6 +32,12 @@
         min-width: 20rem;
     }
 
+    @media (max-width: 540px) {
+        .project-item {
+            min-width: 16rem;
+        }
+    }
+
     .project-item .project-thumb {
         transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
         width: 100%;
