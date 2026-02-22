@@ -27,7 +27,7 @@
 <style>
     #detail-page {
         padding: 0 4rem;
-        margin-top: 8rem;
+        margin-top: 10rem;
     }
 
     .detail-top {

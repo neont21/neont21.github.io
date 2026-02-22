@@ -18,14 +18,14 @@
         top: 0;
         left: 0;
         right: 0;
-        padding: 0 6rem 0 4rem;
+        padding: 0 6rem 1rem 4rem;
         z-index: 100;
         display: flex;
         justify-content: space-between;
         align-items: center;
         background: var(--background-color);
         border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-        height: 5rem;
+        height: fit-content;
     }
 
 	@media (min-width: 1200px) {
@@ -56,6 +56,7 @@
             flex-direction: column-reverse;
             align-items: start;
             justify-content: center;
+            padding-bottom: 1rem;
         }
 
         .page-title h1 {
